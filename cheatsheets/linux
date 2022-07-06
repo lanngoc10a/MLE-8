@@ -1,12 +1,14 @@
 Error in VM: Operating system disk has run out of disk space. Clear at least 5 GB disk space on OS disk (/dev/sda1/ filesystem mounted on /) through the terminal by removing files/folders, and then do sudo reboot. You can check available disk space by running df -h.  For more details refer to https://aka.ms/cidiskfull
 The VM disk is full. Delete jobs, tasks, or files on the node to free up space and then reboot the node.
 
+1. Check which files take largest storage:
 Just to share a magic command to know where all your disk space goes:
 sudo du -hsx /* | sort -rh | head -n 40
 
 Then you can start again from another folder:
 sudo du -hsx /home/* | sort -rh | head -n 35
 
+2. Remove file
 Use the rm command to remove files you no longer need. The rm command removes the entries for a specified file, group of files, or certain select files from a list within a directory. User confirmation, read permission, and write permission are not required before a file is removed when you use the rm command. However, you must have write permission for the directory containing the file.
 
 To delete the file named myfile, type the following:
@@ -17,3 +19,25 @@ rm -i mydir/*
 
 To remove an empty directory, use either rmdir or rm -d followed by the directory name:
 rm -d dirname
+
+Wildcards can be used to select groups of files to be deleted. The * represents multiple characters and the ? represents a single character. This command would delete all of the png image files in the current working directory.
+rm *.png
+
+Some file has protection: use command
+sudo rm -i mydir/*
+
+3. How to Remove Docker Images?
+
+In order to view all of your Docker images, you can use:
+docker images -a
+If you want to remove Docker image or a few, you can use this command and list the IMAGE ID as shown here:
+docker image rm IMAGE_ID
+To remove dangling images that are most recent and untagged, we will use the “docker remove all images” command as shown here:
+docker image prune
+However, to remove Docker images that are present in existent containers that are also tagged, we can use this:
+docker image prune –a
+If you wish to remove all images, for example, that may fall under a specific time frame, use the command:
+docker image prune -a --filter "until=24h"
+
+Reference: https://www.hostinger.com/tutorials/docker-remove-all-images-tutorial/
+
