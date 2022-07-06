@@ -26,6 +26,9 @@ rm *.png
 Some file has protection: use command
 sudo rm -i mydir/*
 
+After deleting necessary file, reboot VM: 
+sudo reboot
+
 3. How to Remove Docker Images?
 
 In order to view all of your Docker images, you can use:
