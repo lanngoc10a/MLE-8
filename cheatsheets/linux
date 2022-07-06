@@ -1,1 +1,10 @@
+Error in VM: Operating system disk has run out of disk space. Clear at least 5 GB disk space on OS disk (/dev/sda1/ filesystem mounted on /) through the terminal by removing files/folders, and then do sudo reboot. You can check available disk space by running df -h.  For more details refer to https://aka.ms/cidiskfull
+The VM disk is full. Delete jobs, tasks, or files on the node to free up space and then reboot the node.
 
+Just to share a magic command to know where all your disk space goes:
+
+sudo du -hsx /* | sort -rh | head -n 40
+
+Then you can start again from another folder:
+
+sudo du -hsx /home/* | sort -rh | head -n 35
