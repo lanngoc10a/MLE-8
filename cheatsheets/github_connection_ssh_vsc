@@ -1,6 +1,11 @@
-git config --global user.email 'lan.nguyen@posten.no'
-git config --global user.name 'lan nguyen'
+git config --global user.email 'nguyenngoclan2612ftu@gmail.com'
+git config --global user.name 'lanngoc10a'
 
 ssh -T git@github.com
 
 ssh-add ssh/id_rsa 
+
+Command Shift P
+ssh configure remote connect
+du se navnet på din ssh: SSH_navn
+ssh -L 5000:localhost:8501 SSH_navn
